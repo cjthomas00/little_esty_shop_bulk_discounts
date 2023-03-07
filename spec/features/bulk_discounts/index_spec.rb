@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Bulk Discount Index Page', type: :feature do
   before :each do
     @merchant = Merchant.create!(name: 'Hair Care')
-    @discount_1 = @merchant.bulk_discounts.create!(percentage_discount: 20, quantity_threshold: 20)
+    @discount_1 = @merchant.bulk_discounts.create!(percentage_discount: 15, quantity_threshold: 16)
     @discount_2 = @merchant.bulk_discounts.create!(percentage_discount: 30, quantity_threshold: 30)
     @discount_3 = @merchant.bulk_discounts.create!(percentage_discount: 40, quantity_threshold: 40)
     visit merchant_dashboard_index_path(@merchant)
@@ -49,9 +49,28 @@ RSpec.describe 'Bulk Discount Index Page', type: :feature do
           click_link("Delete Discount ##{@discount_1.id}")
         end 
         expect(current_path).to eq(merchant_bulk_discounts_path(@merchant))
-        expect(page).to_not have_content(@discount_1.id)
-        expect(page).to_not have_content(@discount_1.percentage_discount)
-        expect(page).to_not have_content(@discount_1.quantity_threshold)
+        within ".discounts" do
+          expect(page).to_not have_content(@discount_1.id)
+          expect(page).to_not have_content(@discount_1.percentage_discount)
+          expect(page).to_not have_content(@discount_1.quantity_threshold)
+        end
+      end
+    end
+
+    #user story 9
+    describe "When I visit my bulk discounts index page" do
+      it "Then I see a section with a header of Upcoming Holidays, In this section the name and date of the next 3 upcoming US holidays are listed." do
+        next_three_holidays = HolidayFacade.next_three_holidays
+        click_link("My Discounts")
+        within ".upcoming_holidays" do
+        expect(page).to have_content("Upcoming Holidays")
+        expect(page).to have_content(next_three_holidays[0].name)
+        expect(page).to have_content(next_three_holidays[0].date)
+        expect(page).to have_content(next_three_holidays[1].name)
+        expect(page).to have_content(next_three_holidays[1].date)
+        expect(page).to have_content(next_three_holidays[2].name)
+        expect(page).to have_content(next_three_holidays[2].date)
+        end
       end
     end
   end

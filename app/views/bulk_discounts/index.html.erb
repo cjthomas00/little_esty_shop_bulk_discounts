@@ -8,7 +8,7 @@
     </ul>
   </nav>
 </div>
-<div class = 'discounts', float: right>
+<div class = 'discounts'>
   <h2> Discounts </h2>
     <% @merchant.bulk_discounts.each do |discount| %>
     <div id= 'discounts-<%=discount.id%>'>
@@ -22,3 +22,13 @@
 </div>
 
 <%= link_to "Create New Discount", new_merchant_bulk_discount_path(@merchant) %>
+
+<div class="upcoming_holidays">
+  <section> <h3> Upcoming Holidays </h3>
+    <ul>
+      <% @holidays.each do |holiday| %>
+        <li> <%= holiday.name %> - <%= holiday.date %> </li>
+      <% end %>
+    </ul>
+  </section>
+</div>
