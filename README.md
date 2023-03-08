@@ -1,4 +1,4 @@
-#Caleb' Little Esty Shop Bulk Discount Project
+Caleb' Little Esty Shop Bulk Discount Project
 
 ## Background and Description
 
