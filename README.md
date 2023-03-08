@@ -1,4 +1,4 @@
-Caleb' Little Esty Shop Bulk Discount Project
+# Caleb' Little Esty Shop Bulk Discount Project
 
 ## Background and Description
 
@@ -19,6 +19,7 @@ This story is the same as user story 6, it just had us display the information o
 User story 9
 In this story we were asked to consume an API that would retrieved all holidays in our country. Upon doing this we were asked to limit the display of those holidays to the next 3, and have them shown on the view of the Merchant's dashboard. Every merchant dashboard now has a section that displays the next 3 holidays. For extension work we could make discounts based off of the upcoming holiday.
 
-##Schema
+
+## Schema
 
 <img width="1152" alt="Screenshot 2023-03-08 at 8 59 35 AM" src="https://user-images.githubusercontent.com/104170346/223764268-514a4c6b-7a1e-440a-9a5a-d9d1961af4fd.png">
